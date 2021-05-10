@@ -55,8 +55,10 @@ jobs:
         name: Download the file
         with:
           url: "[template for pdf](https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex)!"
-          target: public
+          target: public/
           auto-match: true
+          
+      - run: vi public/eisvogel.tex
       
       - name: Copy file
         # You may pin to the exact commit or the version.
