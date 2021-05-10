@@ -10,7 +10,7 @@ titlepage-text-color: "476E7D"
 footer-center: "G1128 Service Specification"
 ...
 
-# WARNING: WORKING DOCUMENT - Service Specification of Maritime Service Registry (MSR)
+# WARNING: WORKING DOCUMENT! - Service Specification of Maritime Service Registry (MSR)
 
 ## Introduction
 In IMO resolution MSC.467(101) ‘guidance on the definition and harmonization of the format and structure of maritime services in the context of e-navigation’, IMO defines Maritime Services and Technical Services in the context of e-navigation. In the resolution the Maritime Services are on the highest level, describing a service in an entirely non-technical manner. One or more Technical Services are associated with a Maritime Service, and these Technical Services are the ones defining the actual information exchange needed to take place in order to carry our a Maritime Service.
