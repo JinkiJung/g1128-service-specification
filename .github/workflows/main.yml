@@ -21,7 +21,14 @@ jobs:
     name: Upload slides
     runs-on: ubuntu-latest
     steps:
+      - name: Cache
+        uses: actions/cache@v2.1.5
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
       - name: Set version
+        id: set_version
         uses: paulhatch/semantic-version@v4.0.2
         with:
           # The prefix to use to identify tags
@@ -55,8 +62,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ steps.set_version.outputs.version }}
+          release_name: Release ${{ steps.set_version.outputs.version }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
