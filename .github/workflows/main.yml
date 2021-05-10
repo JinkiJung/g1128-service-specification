@@ -54,9 +54,14 @@ jobs:
         id: download_file  # Remember to give an ID if you need the output
         name: Download the file
         with:
-          url: "[template for pdf](https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex)!"
-          target: public/templates
+          url: "[template for pdf](https://github.com/Wandmalfarbe/pandoc-latex-template/releases/download/v2.0.0/Eisvogel.zip)!"
+          target: public/
           auto-match: true
+      
+      - name: Decompress
+        uses: TonyBogdanov/zip@1.0
+        with:
+            args: unzip -qq public/${{ steps.download_file.outputs.filename }} -d public/templates
       
       - name: Cache
         uses: actions/cache@v2.1.5
