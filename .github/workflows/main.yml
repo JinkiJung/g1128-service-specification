@@ -48,27 +48,17 @@ jobs:
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
       
-      - run: mkdir -p ${{ github.workspace }}/templates
+      - run: mkdir -p public/templates
       
       - uses: suisei-cn/actions-download-file@v1
         id: download_file  # Remember to give an ID if you need the output
         name: Download the file
         with:
           url: "[template for pdf](https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex)!"
-          target: public/
+          target: public/templates
           auto-match: true
           
-      - run: vi public/eisvogel.tex
-      
-      - name: Copy file
-        # You may pin to the exact commit or the version.
-        # uses: canastro/copy-action@7ddff6fc153a2ea2cd0fb88ed9750544c051e399
-        uses: canastro/copy-action@0.0.2
-        with:
-          # Source file
-          source: public/${{ steps.download_file.outputs.filename }}
-          # Target file
-          target: ${{ github.workspace }}/templates/${{ steps.download_file.outputs.filename }}
+      - run: vi public/templates/eisvogel.tex
       
       - name: Cache
         uses: actions/cache@v2.1.5
@@ -81,7 +71,7 @@ jobs:
         uses: docker://pandoc/latex
         with:
           args: >-  # allows you to break string into multiple lines
-            -s -o Specifications/msr-specification.pdf Specifications/msr-specification.md --from markdown --template eisvogel --data-dir ${{ github.workspace }}
+            -s -o Specifications/msr-specification.pdf Specifications/msr-specification.md --from markdown --template eisvogel --data-dir public/
             
       - name: Create Release
         id: create_release
