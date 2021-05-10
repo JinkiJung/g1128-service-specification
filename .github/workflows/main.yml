@@ -49,7 +49,7 @@ jobs:
           bump_each_commit: false
       
       - name: md to pdf
-        uses: docker://pandoc/core:2.9
+        uses: docker://pandoc/latex
         with:
           args: >-  # allows you to break string into multiple lines
             -s -o Specifications/msr-specification.pdf Specifications/msr-specification.md
