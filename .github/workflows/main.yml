@@ -57,8 +57,6 @@ jobs:
           url: "[template for pdf](https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex)!"
           target: public/templates
           auto-match: true
-          
-      - run: vi public/templates/eisvogel.tex
       
       - name: Cache
         uses: actions/cache@v2.1.5
