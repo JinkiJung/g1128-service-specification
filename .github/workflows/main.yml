@@ -21,12 +21,9 @@ jobs:
     name: Upload slides
     runs-on: ubuntu-latest
     steps:
-      - name: Cache
-        uses: actions/cache@v2.1.5
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+      - name: Checkout code
+        uses: actions/checkout@master
+        
       - name: Set version
         id: set_version
         uses: paulhatch/semantic-version@v4.0.2
@@ -50,12 +47,13 @@ jobs:
           short_tags: true
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
-      - name: Checkout code
-        uses: actions/checkout@master
-      - name: Pandoc Document Converter
-        uses: Ender-events/pandoc@master
+      
+      - name: md to pdf
+        uses: docker://pandoc/core:2.9
         with:
-          args: '-s -o Specifications/msr-specification.pdf Specifications/msr-specification.md'
+          args: >-  # allows you to break string into multiple lines
+            -s -o Specifications/msr-specification.pdf Specifications/msr-specification.md
+            
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.0.0
