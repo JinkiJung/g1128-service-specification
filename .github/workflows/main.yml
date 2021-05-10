@@ -48,21 +48,21 @@ jobs:
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
       
+      - run: mkdir -p ${{ github.workspace }}/templates
+      
       - uses: suisei-cn/actions-download-file@v1
         id: download_file  # Remember to give an ID if you need the output
         name: Download the file
         with:
           url: "[template for pdf](https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex)!"
-          target: public/
+          target: ${{ github.workspace }}/templates
           auto-match: true
-          
-      - run: echo ${{ steps.download_file.outputs.filename }}
       
       - name: md to pdf
         uses: docker://pandoc/latex
         with:
           args: >-  # allows you to break string into multiple lines
-            -s -o Specifications/msr-specification.pdf Specifications/msr-specification.md
+            -s -o Specifications/msr-specification.pdf Specifications/msr-specification.md --from markdown --template eisvogel --data-dir ${{ github.workspace }}
             
       - name: Create Release
         id: create_release
