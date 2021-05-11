@@ -10,6 +10,8 @@ titlepage-text-color: "476E7D"
 footer-center: "G1128 Service Specification"
 ...
 
+<!-- Hey it is comment! This should be invisible. -->
+
 # WARNING: WORKING DOCUMENT! - Service Specification of Maritime Service Registry (MSR)
 
 ## Introduction
