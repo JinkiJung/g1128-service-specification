@@ -79,7 +79,7 @@ jobs:
         uses: docker://pandoc/latex
         with:
           args: >-  # allows you to break string into multiple lines
-            -s -o msr-specification.pdf msr-specification.md --from markdown --template eisvogel --data-dir public/
+            -s -o Specifications/msr-specification.pdf Specifications/msr-specification.md --from markdown --template eisvogel --data-dir public/
           working-directory: ${{ env.working-directory }}
             
       - name: Create Release
