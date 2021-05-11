@@ -74,7 +74,7 @@ jobs:
       - name: Pandoc Document Converter
         uses: Ender-events/pandoc@master
         with:
-          args: '-s -o Specifications/msr-specification.pdf Specifications/msr-specification.md --from markdown --template eisvogel --data-dir public/'
+          args: '-s -o msr-specification.pdf msr-specification.md --from markdown --template eisvogel --data-dir public/'
             
       - name: Create Release
         id: create_release
