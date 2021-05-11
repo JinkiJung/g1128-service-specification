@@ -20,6 +20,8 @@ jobs:
   build:
     name: Upload slides
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./Specifications
     steps:
       - name: Checkout code
         uses: actions/checkout@master
@@ -78,7 +80,7 @@ jobs:
         with:
           args: >-  # allows you to break string into multiple lines
             -s -o msr-specification.pdf msr-specification.md --from markdown --template eisvogel --data-dir public/
-          working-directory: Specifications
+          working-directory: ${{ env.working-directory }}
             
       - name: Create Release
         id: create_release
