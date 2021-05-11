@@ -18,7 +18,7 @@ on:
 
 jobs:
   build:
-    name: Upload slides
+    name: md to formatted pdf
     runs-on: ubuntu-latest
     env:
       working-directory: ./Specifications
@@ -74,13 +74,11 @@ jobs:
           path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      
-      - name: md to pdf
-        uses: docker://pandoc/latex
+          
+      - name: Pandoc Document Converter
+        uses: Ender-events/pandoc@master
         with:
-          args: >-  # allows you to break string into multiple lines
-            -s -o Specifications/msr-specification.pdf Specifications/msr-specification.md --from markdown --template eisvogel --data-dir public/
-          working-directory: ${{ env.working-directory }}
+          args: '-s -o Specifications/msr-specification.pdf Specifications/msr-specification.md --from markdown --template eisvogel --data-dir public/'
             
       - name: Create Release
         id: create_release
