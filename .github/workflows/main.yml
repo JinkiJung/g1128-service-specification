@@ -64,7 +64,7 @@ jobs:
             args: unzip -qq public/${{ steps.download_file.outputs.filename }} -d public/templates
       
       - name: Install texlive-latex-extra
-        run: sudo apt-get install texlive-latex-extra 
+        run: sudo apt-get install texlive-latex-extra texlive-generic-recommended
       
       - name: Cache
         uses: actions/cache@v2.1.5
