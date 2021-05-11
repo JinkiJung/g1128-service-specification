@@ -75,7 +75,10 @@ jobs:
         uses: Ender-events/pandoc@master
         with:
           args: '-s -o msr-specification.pdf msr-specification.md --from markdown --template eisvogel --data-dir public/'
-            
+      
+      - name: Confirmation of version
+        run: echo "Current version - ${{ steps.set_version.outputs.version }}"
+      
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.0.0
