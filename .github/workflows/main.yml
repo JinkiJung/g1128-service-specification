@@ -64,7 +64,7 @@ jobs:
             args: unzip -qq public/${{ steps.download_file.outputs.filename }} -d public/templates
       
       - name: Install texlive-latex-extra
-        run: sudo apt-get install texlive-latex-extra texlive-generic-recommended
+        run: sudo apt-get install texlive-latex-extra
       
       - name: Cache
         uses: actions/cache@v2.1.5
@@ -77,7 +77,8 @@ jobs:
         uses: docker://pandoc/latex
         with:
           args: >-  # allows you to break string into multiple lines
-            -s -o Specifications/msr-specification.pdf Specifications/msr-specification.md --from markdown --template eisvogel --data-dir public/
+            -s -o msr-specification.pdf msr-specification.md --from markdown --template eisvogel --data-dir public/
+          working-directory: Specifications
             
       - name: Create Release
         id: create_release
