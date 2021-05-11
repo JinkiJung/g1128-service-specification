@@ -94,6 +94,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./Specifications/msr-specification.pdf
-          asset_name: msr-specification.pdf
+          asset_path: ./msr-specification.pdf
+          asset_name: msr-specification-${{ steps.set_version.outputs.version }}.pdf
           asset_content_type: application/pdf
