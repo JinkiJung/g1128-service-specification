@@ -18,4 +18,4 @@ You can directly make a commit if you choose GitHub and this folder in MSR-WG re
 
 Here is an example of embedding an exported figure:
 
-![example](../msr-specification-erd-local.png)
+![example](../service-specification-erd-local.png)
