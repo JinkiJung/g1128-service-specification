@@ -2,11 +2,17 @@
 
 You can collaborate on the service-specification.md file for the specification then the repository will turn the file into a nicely-formatted pdf for you.
 
-The document template is following the [IALA's G1128 service specification format](https://www.iala-aism.org/product/g1128-specification-e-navigation-technical-services/).
+The up-to-date pdf file can be found at the release page.
 
-## Versioning of the document
+## How to work?
 
-A version is formatted as:
+*service-specification.md* file in the root is the working document that you need to fill in every sections being required.
+
+The given document template follows the [IALA's G1128 service specification format](https://www.iala-aism.org/product/g1128-specification-e-navigation-technical-services/).
+
+## Release versioning
+
+The version of release is formatted as:
 ```
 format: "${major}.${minor}.${patch}"
 ```
